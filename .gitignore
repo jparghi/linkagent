@@ -1,0 +1,28 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+build/
+
+# Logs
+*.log
+*.out
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Local dev data
+redisdata/
+sanity.log
+
+# Environment files
+.env
+.env.*

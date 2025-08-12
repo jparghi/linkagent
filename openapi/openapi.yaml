@@ -1,0 +1,31 @@
+openapi: 3.0.3
+info:
+  title: LinkAgent Demo API
+  version: 0.1.0
+paths:
+  /health:
+    get:
+      responses:
+        '200': { description: OK }
+  /connectors:
+    get:
+      responses:
+        '200': { description: OK }
+  /agent/execute:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [intent, target, idempotencyKey, params]
+              properties:
+                intent: { type: string, example: create_issue }
+                target: { type: string, example: jira }
+                idempotencyKey: { type: string, example: demo-123 }
+                params: { type: object, additionalProperties: true }
+      responses:
+        '200': { description: OK or IDEMPOTENT_REPLAY }
+        '400': { description: BAD_REQUEST }
+        '502': { description: CONNECTOR_FAILURE }
